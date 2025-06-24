@@ -1,0 +1,99 @@
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Image Reflection in Text</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: black;
+      font-family: Arial, sans-serif;
+    }
+
+    .image-reflection-wrapper {
+      position: relative;
+      width: 100%;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    /* Main image above */
+    .main-image {
+      width: 100%;
+      height: 60vh;
+      object-fit: cover;
+      display: block;
+    }
+
+    /* Text + reflection block */
+    .text-overlay {
+      position: relative;
+      width: 100%;
+      height: 40vh;
+      background: black;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    /* Reflection image flipped vertically */
+    .reflected-image {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transform: scaleY(-1);
+      opacity: 0.35;
+      filter: blur(2px);
+      z-index: 1;
+    }
+
+    /* Large text above reflection */
+    .reflect-text {
+      position: relative;
+      color: white;
+      font-size: clamp(3rem, 13vw, 12rem);
+      font-weight: bold;
+      text-transform: uppercase;
+      z-index: 2;
+      mix-blend-mode: lighten; /* Optional, gives a nice softening */
+    }
+
+    /* Optional fade for better realism */
+    .text-overlay::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      height: 50%;
+      width: 100%;
+      background: linear-gradient(to bottom, rgba(0, 0, 0, 0), black);
+      z-index: 3;
+      pointer-events: none;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="image-reflection-wrapper">
+    <!-- Top Image -->
+    <img src="./glow_effect.svg" alt="Reflection Image" class="main-image" />
+
+    <!-- Text + Reflection -->
+    <div class="text-overlay">
+      <img src="./glow_effect.svg" alt="Reflected" class="reflected-image" />
+      <h1 class="reflect-text">OODA BOND</h1>
+    </div>
+  </div>
+
+</body>
+</html>
